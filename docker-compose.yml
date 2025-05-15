@@ -10,6 +10,9 @@ services:
       - "8000:80"
     volumes:
       - .:/var/wwww/html
+    working_dir: /var/www/html
+    tty: true
+    stdin_open: true
   mysql: 
     image: mysql:8.0
     container_name: mysql
