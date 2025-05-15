@@ -1,6 +1,10 @@
 services: 
   php:
-    image: dockerfile
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
     container_name: php
     ports:
       - "8000:80"
@@ -11,6 +15,12 @@ services:
     container_name: mysql
     ports:
       - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
 
     
 
